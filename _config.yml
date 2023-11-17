@@ -18,7 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Alex Power's Blog
+title: Alex Power
+tagline: Words about technology, life, and fatherhood.
 email: powera17@hotmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Ramblings about technology, fatherhood, and 21st century living.
@@ -26,9 +27,12 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.alexpower.me" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: alexhaspow24489
 github_username:  alex-power
+favicon: /assets/favicon.ico
+lang: en
+author.name: Alex Power
 
 # Build settings
-theme: minima
+theme: monophase
 plugins:
   - jekyll-feed
 
