@@ -32,7 +32,7 @@ lang: en
 author.name: Alex Power
 
 # Build settings
-theme: monophase
+theme: minima
 plugins:
   - jekyll-feed
 
