@@ -3,7 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-title: home
+title: Home
 permalink: /
 ---
-# Hi there, welcome to my blog.
+### Words about technology, life, and fatherhood.

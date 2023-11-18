@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Alex Power
+title: alex power
 tagline: Words about technology, life, and fatherhood.
 email: powera17@hotmail.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -33,6 +33,9 @@ author.name: Alex Power
 
 # Build settings
 theme: minima
+minima:
+  skin: dark
+  
 plugins:
   - jekyll-feed
 
