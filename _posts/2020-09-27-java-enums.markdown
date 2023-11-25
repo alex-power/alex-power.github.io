@@ -69,8 +69,30 @@ public abstract class Enum<E extends Enum<E>>
 We can see that this is mostly just a  [regular abstract class](https://javarevisited.blogspot.com/2010/10/abstraction-in-java.html), with two fields,  `name`  and  `ordinal`.  Since Enums are all classes, they have many of the features of a regular class.  We are able to provide Enums with instance methods, [constructors](https://javarevisited.blogspot.com/2012/12/what-is-constructor-in-java-example-chainning-overloading.html), and fields.  We can override `toString()`, but not `hashCode()` or `equals(Object other)`.
  
 Let’s look at our example enum,  `Operation`.
+{% highlight java %}
+enum Operation { 
+  ADD, 
+  SUBTRACT, 
+  MULTIPLY 
+}
+{% endhighlight %}
 
 This enum represents an operation that can be performed on two values and will produce a result. Your initial thought on how to implement this functionality might have been to use a  [switch statement](https://www.java67.com/2012/09/how-to-use-java-enum-in-switch-case-example.html), like this:
+
+{% highlight java %}
+public int apply(Operation operation, int arg1, int arg2) { 
+  switch(operation) { 
+    case ADD: 
+      return arg1 + arg2; 
+    case SUBTRACT: 
+      return arg1 - arg2; 
+    case MULTIPLY: 
+      return arg1 * arg2; 
+    default: 
+      throw new UnsupportedOperationException(); 
+  } 
+}
+{% endhighlight %}
 
 There’s a few problems with this implementation. The first is that if we add a new operation to our  `Operation`  enum, we won't be notified by the compiler that this switch does not handle our new operation correctly. Even worse, if a lazy developer copied or re-wrote this code in another class, we would probably fail to update it.
 
@@ -83,13 +105,68 @@ Since enums are classes, we can create an enum field to hold the function that p
 
 First, let’s put our switch inside our enum class.
 
+{% highlight java %}
+enum Operation {
+ ADD,
+ SUBTRACT,
+ MULTIPLY;
+  
+ public static int apply(Operation operation, int arg1, int arg2) { 
+   switch(operation) {
+     case ADD: 
+       return arg1 + arg2;
+     case SUBTRACT: 
+       return arg1 - arg2;
+     case MULTIPLY: 
+       return arg1 * arg2;
+     default: 
+       throw new UnsupportedOperationException(); 
+    } 
+  } 
+}
+{% endhighlight %}
+
 We can do an addition like this: `Operation.apply(Operation.ADD, 2, 3);`
 
 Since we are now calling the method from within  `Operation`, we can change it to an instance method and use  `this`  instead of passing the desired  `Operation`  as a parameter.  `apply()`  now looks like this:
 
+{% highlight java %}
+public int apply(int arg1, int arg2) { 
+  switch(this) { 
+    case ADD: 
+      return arg1 + arg2; 
+    case SUBTRACT: 
+      return arg1 - arg2;
+    case MULTIPLY: 
+      return arg1 * arg2; 
+    default: 
+      throw new UnsupportedOperationException(); 
+  }
+}
+{% endhighlight %}
+
 Call the addition operation like this:  `Operation.ADD.apply(2, 3);`
 
 That looks pretty good. Now let’s take it one step further, and eliminate the switch statement entirely by using  [functional programming.](https://javarevisited.blogspot.com/2020/04/top-5-courses-to-learn-functional-programming-in-java-with-lambda-and-stream.html)
+
+{% highlight java %}
+
+enum Operation {
+		ADD((x, y) -> x + y),
+		SUBTRACT((x, y) -> x - y),
+		MULTIPLY((x, y) -> x * y);
+
+		Operation(BiFunction<Integer, Integer, Integer> operation) {
+			this.operation = operation;
+		}
+
+		private final BiFunction<Integer, Integer, Integer> operation;
+
+		public int apply(int x, int y) {
+			return operation.apply(x, y);
+		}
+	}
+{% endhighlight %}
 
 Here’s what I did:
 
@@ -100,6 +177,15 @@ Here’s what I did:
 The  `java.util.function.BiFunction`  `operation`  field is a reference to a function (method) that takes two arguments. In our case, both arguments are ints, and the return value is an int as well. Unfortunately,  [Java parameterized types](https://javarevisited.blogspot.com/2012/08/how-to-write-parametrized-class-method-Generic-example.html)  don't support primitives so we must use the boxed primitive  `Integer`.
 
 Because  `BiFunction`  is annotated with  `@FunctionalInterface`, we can define one using Lambda notation. Since our function takes two arguments, we specify them using  `(x, y)`. Then we define a single line method which returns a value using  `-> x + y`. This is equivalent to the below, just more succinct.
+
+{% highlight java %}
+class Adder implements BiFunction<Integer, Integer, Integer> {
+	@Override
+	public Integer apply(Integer x, Integer y) {
+		return x + y;
+  }
+}
+{% endhighlight %}
 
 Our new `Operation` implementation is used in the same way: `Operation.ADD.apply(2, 3);`.  However,  this implementation is better because the compiler will tell us when a new `Operation` is added, requiring us to implement the new function.  Without this, it is possible to get an `UnsupportedOperationException()` if we didn't also remember to update our switch statement when adding a new `Operation`.
 
