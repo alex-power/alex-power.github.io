@@ -8,7 +8,7 @@ author: Alex Power
 
 ![](/assets/java%20enums.jpg)
 
-Photo by  [James Harrison](https://unsplash.com/@jstrippa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)  on  [Unsplash](https://unsplash.com/@jstrippa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+##### Photo by [James Harrison](https://unsplash.com/@jstrippa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/@jstrippa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 Frequently, I find myself using enums in Java to represent a set of potential values for something. The ability to determine at compile-time what values a type can have is a powerful  capability, it gives structure and meaning to your code. When I first learned about enums, I thought they were  merely  a tool to give a name to a constant and could be just as easily replaced by  `static constant String ENUM_VAL_NAME`.
 
@@ -195,5 +195,4 @@ Our new `Operation` implementation is used in the same way: `Operation.ADD.apply
 2.  Enums can have fields, constructors, and instance methods.
 3.  Java enum fields can store functions.  In concert with lambdas, you can create clean, safe enum-specific implementations of a function, and enforce them at compile time (as opposed to using  `switch`).
 
-Here is the  [GitHub repo](https://github.com/alex-power/java-enum-example)  for this example.`enter code here`
-> Written with [StackEdit](https://stackedit.io/).
+Here is the  [GitHub repo](https://github.com/alex-power/java-enum-example)  for this example.

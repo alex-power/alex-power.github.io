@@ -5,13 +5,11 @@ categories: dev
 author: Alex Power
 ---
 
-### How My Son Taught Me The Most Important Skill I Used to Know
-
 #### This skill is the difference between stalling out or climbing up in every area of life.
 
 ![](/assets/not%20my%20son.jpg)
 
-Photo by [Kevin Gent](https://unsplash.com/@kevinbgent?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
+##### Photo by [Kevin Gent](https://unsplash.com/@kevinbgent?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
 ### Is the Goal the Destination or the Journey?
 
