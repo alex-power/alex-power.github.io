@@ -2,6 +2,7 @@
 layout: post
 title:  "How My Son Taught Me The Most Important Skill I Used to Know"
 categories: dev
+author: Alex Power
 ---
 
 ### How My Son Taught Me The Most Important Skill I Used to Know

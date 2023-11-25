@@ -2,6 +2,7 @@
 layout: post
 title:  "Interesting and helpful Java Enum patterns"
 categories: dev
+author: Alex Power
 ---
 #### Java’s enum is more powerful than you think. It’s a first-class citizen in Java and even supports functional programming.
 

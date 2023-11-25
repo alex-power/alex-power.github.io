@@ -3,6 +3,7 @@ layout: post
 title:  "Integration Tests Will Make You a Better Programmer"
 date:   2020-09-17 09:50:29 -0500
 categories: dev
+author: Alex Power
 ---
 
 ![programming](/assets/kelly-sikkema-YK0HPwWDJ1I-unsplash.jpg)
